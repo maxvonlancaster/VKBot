@@ -22,7 +22,9 @@ namespace VKBot.Services
             -24261502, 
             -131166480, 
             -51445749, 
-            -43606620 
+            -43606620,
+            -132909030,
+            -34985835
         };
         private List<string> _text = new List<string>();
         private int _requestWait = 6;

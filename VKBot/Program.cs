@@ -18,7 +18,7 @@ namespace VKBot
         // past this into browser
         // https://oauth.vk.com/authorize?client_id=7631190&scope=friends,wall,...&redirect_uri=https://oauth.vk.com/blank.html&response_type=token
         // the result will be in access_token param; insert your client_id instead of mine (duh)
-        private static string _accessToken = "0ddc4ff48b803710eaca4c468b362cb39e3361e1f3406b6c9aa46ac622fe51de4a26e000f56158b3506e3";
+        private static string _accessToken = "3368735b70790b24755d721f2683708f119619e19f37700273da083dc17e149bb35416a6b776fc20f7d94";
         private static int _option;
 
         static void Main(string[] args)
@@ -53,7 +53,7 @@ namespace VKBot
                 // Post on walls for friend requests
 
                 PostOnWalls service2 = new PostOnWalls();
-                service2.PostOnWallsElephant(api);
+                service2.PostOnWallsForFriends(api);
             }
             if (_option == 3) 
             {

@@ -15,10 +15,11 @@ namespace VKBot.Services
     {
         private long _mineId = 537259490;
         private int _wait = 300;
+        private int _requestWait = 3;
         // implement service for liking all the posts by all the friends 
         public void LikeProfPicAll(VkApi api) 
         {
-            int count = 550;
+            int count = 2241;
             List<string> friendPhotos = api.Friends.Get(new VkNet.Model.RequestParams.FriendsGetParams
             {
                 UserId = _mineId,
@@ -27,7 +28,7 @@ namespace VKBot.Services
                 .Select(i => i.PhotoId)
                 .Where(p => p != null)
                 .Distinct()
-                .Skip(550)
+                .Skip(2241)
                 .ToList();
 
             Dictionary<long, long> friendPhotosSplit = new Dictionary<long, long>();
@@ -48,6 +49,7 @@ namespace VKBot.Services
                     });
                     count++;
                     Console.WriteLine("Sent like for {0}, number: {1}", elem.Key, count);
+                    Thread.Sleep(1000 * _requestWait);
                     if (count % 30 == 0)
                     {
                         Thread.Sleep(1000 * _wait);
@@ -56,6 +58,7 @@ namespace VKBot.Services
                 catch (VkApiMethodInvokeException ex) 
                 {
                     Console.WriteLine("Cannot send request for {0}: {1}", elem.Key, ex.Message);
+                    Thread.Sleep(1000 * _wait);
                 }
             }
         }
